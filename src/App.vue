@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <h1>sad</h1>
-    </div>
+    <MainLayout></MainLayout>
 </template>
 
 <script>
+import MainLayout from './layout/MainLayout.vue'
 export default {
-
+    components: {
+        MainLayout
+    }
 }
 </script>
