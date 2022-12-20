@@ -91,10 +91,9 @@ export default {
         const res = ref('')
         console.log(process.env.VUE_APP_API_KEY)
         const getRequest = async () => {
-            // const url = `https://api.api-ninjas.com/v1/weather?city=${city.value}`
-            // const url = 'https://api.api-ninjas.com/v1/weather?city=London'
-            await axios.get({
-                url: 'https://api.api-ninjas.com/v1/weather?city=London',
+            const url = `https://api.api-ninjas.com/v1/weather?city=${city.value}`
+            await axios.get(
+                url, {
                 headers: {
                     'X-Api-Key': 'ZX5zAsrMA/cgYkC8dY2X9g==iWYkq7v5ziXfLFi9'
                 },
