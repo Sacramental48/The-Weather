@@ -1,12 +1,14 @@
 <template>
-    <TheCurrentDay></TheCurrentDay>
+    <div class="wrapper">
+        <TheCurrentDay></TheCurrentDay>
+    </div>
 </template>
 
 <script>
 import TheCurrentDay from '../components/TheCurrentDay.vue'
 export default {
     components: {
-        TheCurrentDay
+        TheCurrentDay,
     }
 }
 </script>
