@@ -5,41 +5,53 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
     font-family: sans-serif;
     font-size: 16px;
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(rgba(25, 98, 206, 0.5), rgba(136, 157, 184, 0.5),rgba(11, 49, 218, 0.5));
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(339deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
 }
 
 
 
 .wrapper {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+    background-color: rgb(94, 188, 241);
+    width: 25rem;
+    height: 40rem;
+    border: 2px solid purple;
+    border-radius: 50px;
+    margin-top: 20px;
 }
 .current-day {
     display: flex;
     text-align: center;
     flex-direction: column;
+    background-color: #fff;
     width: 100%;
-    margin: 10px 0px 50px 0px;
+    height: 20rem;
+    border-radius: 50px;
+    padding: 55px 0px 10px 0px;
     font-size: 20px;
 }
 .current-day__city {
     font-size: 46px;
-    color: #fff;
+    color: #000;
 }
 .current-day__discription {
     font-size: 16px;
-    color: rgb(163, 87, 87);
+    color: rgb(184, 30, 30);
 }
 
 .current-day__temperature {
     font-size: 28px;
-    color: rgb(221, 236, 4);
+    color: rgb(0, 0, 0);
 }
 
 .current-day__month {
@@ -50,46 +62,9 @@ body {
     margin-bottom: 15px;
 }   
 /* ----------------------------------------------------------- */
-.another-day {
-    display: flex;
-    flex-wrap: wrap;
-    width: 760px;
-    /* border: 1px solid red; */
-    margin-bottom: 20px;
-}
 
-/* .box-up {
-    width: 200px;
-    height: 80px;
-    border: 1px solid black
-}
-
-.box-down {
-    width: 140px;
-    height: 80px;
-    border: 1px solid black
-} */
-
-.box {
-    display: flex;
-    justify-content: space-between;
-    margin: 1px;
-    width: 250px;
-    height: 80px;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-}
-
-.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 10px
-}
-
-.rigth {
-    margin: 10px;
+.city {
+    padding: 40px 0px 0px 0px;
 }
 
 .city-discribe {
@@ -127,93 +102,22 @@ body {
     background-clip: padding-box;
     border: 2px solid #bdbdbd;
     border-radius: 0.25rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.error {
+    margin-bottom: 15px;
+    color: red;
+    font-size: 20px;
 }
 /* ======================================================== */
-.button {
-    display: flex;
+  
+.btn {
+    padding: 15px 30px;
     cursor: pointer;
-    align-items: center;
-    padding-right: 40px;
+    border: 0;
+    color: #000;
+    background-color: #fff;
+    font-weight: 200;
+    border-radius: 50px;
 }
-.button {
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    padding-right: 40px;
-  }
-  .button:hover .button__border-circle {
-    transform: translateX(60px);
-  }
-  .button:hover .button__mask-circle {
-    -webkit-clip-path: circle(25px at 85px);
-            clip-path: circle(25px at 85px);
-  }
-  
-  .button__text {
-    z-index: 1;
-    font-size: 14px;
-    margin-right: -18px;
-    color: rgb(100, 102, 93);;
-    letter-spacing: 0.05em;
-  }
-  
-  .button__wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .button__arrow {
-    left: 35px;
-    height: 3px;
-    width: 50px;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    background-color: #86154a;
-  }
-  .button__arrow:after {
-    content: "";
-    width: 0;
-    height: 0;
-    top: -5px;
-    right: -7px;
-    position: absolute;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-    border-left: 7px solid #86154a;
-  }
-  
-  .button__border-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid #241515;
-    transition: transform 987ms;
-  }
-  
-  .button__mask-circle {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-clip-path: circle(25px);
-            clip-path: circle(25px);
-    transition: -webkit-clip-path 987ms;
-    transition: clip-path 987ms;
-    transition: clip-path 987ms, -webkit-clip-path 987ms;
-  }
-  
-  .button__small-circle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    transform: translateX(60px);
-    background-color: #86154a;
-  }
-
-  /* ============================================ */
