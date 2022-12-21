@@ -1,14 +1,13 @@
 <template>
     <div class="wrapper">
         <div class="current-day">
-            <div v-if="data !== null">
-                <div class="current-day__city center">City-name</div>
+            <AppLoader v-if="loader"/>
+            <h1 v-if="checkOut">Select a city to Enter</h1>
+            <div v-if="flag">
+                <div class="current-day__city center" v-for="c in cityName" :key="c.id">{{c.name}}</div>
                 <div class="current-day__discription center">Yasno</div>
-                <div class="current-day__temperature center">{{data.temp}}&#8451;</div>
-                <div class="current-day__month center">Tuesday, 25 feb</div>
-            </div>
-            <div v-else>
-                <h1>Choose your city</h1>
+                <div class="current-day__temperature center">{{data}}&#8451;</div>
+                <div class="current-day__month center"></div>
             </div>
         </div>
         <div class="city">
@@ -25,17 +24,24 @@
 <script>
 import {ref, watch} from 'vue'
 import axios from 'axios'
+import AppLoader from '../components/ui/AppLoader.vue'
 export default {
     setup() {
         const city = ref('')
+        const cityName = ref('')
+
         const data = ref(null)
+
         const isError = ref(false)
         const isActive = ref(true)
+        const loader = ref(false)
+        const flag = ref(false)
+        const checkOut = ref(true)
 
         watch(isError, val => {
             if(val) {
                 setTimeout(() => {
-                    error.value = false
+                    isError.value = false
                 }, 3000)
             }
         })
@@ -47,20 +53,47 @@ export default {
         })
 
         const getRequest = async () => {
+            checkOut.value = false
+            loader.value = true
+            flag.value = false
             try {
                 const url = `https://api.api-ninjas.com/v1/weather?city=${city.value}`
                 await axios.get(url, {
                     headers: {
                         'X-Api-Key': process.env.VUE_APP_API_KEY
                     },
-                }).then(res => data.value = res.data)
+                }).then(res => data.value = res.data.temp)
             }catch(e) {
                 isError.value = true
             }
+
+           try {
+                const url = `https://api.api-ninjas.com/v1/city?name=${city.value}`
+                await axios.get(url, {
+                    headers: {
+                        'X-Api-Key': process.env.VUE_APP_API_KEY
+                    },
+                }).then(res => cityName.value = res.data)
+            }catch(e) {
+            }
+            loader.value = false
+            flag.value = true
         }
         return {
-            city, getRequest, isError, data, isActive
+            city, 
+            getRequest, 
+            isError, 
+            data, 
+            isActive, 
+            cityName,
+            loader,
+            flag,
+            checkOut,
+            newDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
         }
+    },
+    components: {
+        AppLoader
     }
 }
 </script>
