@@ -1,5 +1,5 @@
 <template>
-    <div class="loader"></div>
+    <img class="gify" src="../../assets/d3.gif" alt="Loading">
 </template>
 
 <script>
